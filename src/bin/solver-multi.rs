@@ -20,7 +20,7 @@ fn solve(prefix: &str, difficulty: u32) -> u64 {
             let data = format!("{}{}", prefix, i);
             context.update(data.as_bytes());
             let digest = context.finish();
-            let leading_zeros = BigEndian::read_u64(&digest.as_ref()[..8]).leading_zeros();
+            let leading_zeros = BigEndian::read_u64(&digest.as_ref()[..8]).trailing_zeros();
             leading_zeros >= difficulty
         });
 
